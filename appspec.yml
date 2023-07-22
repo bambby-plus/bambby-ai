@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: / 
+    destination: /home/ubuntu/microservice
+hooks:
+  BeforeInstall:
+    - location: Scripts/install-deps.sh
+      timeout: 180
+      runas: root
+  AfterInstall:
+    - location: Scripts/AfterInstall.sh
+      runas: root
+  ApplicationStart:
+    - location: Scripts/start.sh
+      timeout: 180
+      runas: root
+  ApplicationStop:
+    - location: Scripts/stop.sh
+      timeout: 180
+      runas: root

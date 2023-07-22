@@ -1,0 +1,504 @@
+
+/* CSS Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.sidebar-container {
+  overflow: hidden;
+  display: flex;
+  height: calc(100vh - 50px);
+  min-width: 300px;
+  transition: width 0.3s ease-in-out;
+}
+
+.chat-container {
+  height: calc(100vh - 50px);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #075e54;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-250px);
+}
+
+.sidebar-container.collapsed {
+  min-width: 50px;
+}
+
+.sidebar-header {
+  padding: 10px;
+  background-color: #25d366;
+  color: #fff;
+  text-align: left;
+  height: 50px;
+}
+
+.sidebar-content {
+  width: 100%;
+  box-sizing: border-box;
+  transition: width 0.3s ease-in-out;
+  background-color: #f2f2f2;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapse-button {
+  flex-shrink: 0;
+  background-color: #25d366;
+  color: #fff;
+}
+
+.new-chat-button {
+  width: calc(100% - 20px);
+  padding: 8px 15px;
+  margin: 10px;
+  background-color: #25d366;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  box-sizing: border-box;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.sidebar-content .new-chat-button:hover {
+  background-color: #128c7e;
+}
+
+.sidebar-footer {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #fafafa;
+  /* Updated to #FFFFFF */
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  height: 60px;
+  /* Set a fixed height for the sidebar footer */
+  position: sticky;
+  bottom: 0;
+}
+
+.chat-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+}
+
+.chat-header {
+  padding: 10px;
+  background-color: #075e54;
+  color: #fff;
+  text-align: center;
+  height: 50px;
+  min-height: 50px;
+  position: relative;
+  text-align: left;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.toggle-button:hover {
+  color: #ccc;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.incoming-message .message-content {
+  background-color: #d0d0d0;
+  align-self: flex-start;
+  /* position: relative; */
+}
+
+.default-background {
+  width: 200px;
+  height: 200px;
+  background-color: #cccccc;
+  /* Set your desired default background 
+        color */
+  position: relative;
+}
+
+.image-preview {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.image-overlay:hover {
+  opacity: 1;
+}
+
+.image-overlay i {
+  color: #fff;
+  font-size: 24px;
+}
+
+.audio-player {
+  width: 200px;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+}
+
+.play-button {
+  background-color: #075e54;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  min-width: 40px;
+  min-height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.play-button:hover {
+  background-color: #128c7e;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #e3e2e2;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background-color: #075e54;
+  width: 0;
+}
+
+.current-time,
+.duration {
+  font-size: 12px;
+  color: #777;
+}
+
+.outgoing-message .message-content {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.text-content {
+  margin-top: 5px;
+}
+
+.timestamp {
+  color: #777;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.message-content {
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  word-wrap: break-word;
+  position: relative;
+  /* padding-right: 40px; */
+}
+
+.input-container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.input-container textarea {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background-color: #f2f2f2;
+  resize: none;
+}
+
+.input-container input[type="submit"] {
+  padding: 8px 15px;
+  background-color: #075e54;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.input-container .emoji-button {
+  font-size: 1.8rem;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 5px;
+  transition: color 0.3s ease-in-out;
+}
+
+.input-container .emoji-button:hover {
+  color: #333;
+}
+
+.previous-chats {
+  padding: 10px;
+  background-color: #f2f2f2;
+  margin-top: auto;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.previous-chats-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.previous-chats-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.previous-chats-list li {
+  margin-bottom: 5px;
+}
+
+.chat-button {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-button:hover {
+  background-color: #e5e5e5;
+}
+
+.chat-button.on {
+  background-color: #e5e5e5;
+}
+
+.chat-button {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-button:hover {
+  background-color: #e5e5e5;
+}
+
+.rounded-icon {
+  border-radius: 50%;
+  background-color: #075e54;
+  color: #fff;
+  padding: 8px;
+  margin-left: 10px;
+  /* Add margin to the left */
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.rounded-icon:hover {
+  background-color: #128c7e;
+}
+
+.rounded-icon:active {
+  background-color: #953b01;
+}
+
+.sidebar-content {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.collapse-button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.collapse-button:hover {
+  background-color: #f2f2f2;
+}
+
+.collapse-button i {
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.emoji-container {
+  width: 100%;
+  background-color: #e3e3e3;
+  max-height: 200px;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.emoji-container.open {
+  min-height: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+  visibility: visible;
+  display: block;
+  /* Show the emoji container when the 'open' class is added */
+  opacity: 1;
+  /* Set opacity to 1 when the container is open */
+}
+
+.emoji-grid {
+  display: grid;
+  margin: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+  gap: 20px;
+}
+
+.emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.emoji:hover {
+  background-color: #e5e5e5;
+}
+
+.text-content {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  bottom: -19px;
+  right: -41px;
+  color: #075e54;
+  border: none;
+  border-radius: 50%;
+  padding: 0px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  height: fit-content;
+  width: fit-content;
+  background-color: transparent;
+}
+
+.copy-button:hover {
+  color: #128c7e;
+}
+
+.copy-button i {
+  font-size: 12px;
+}
+
+.chat-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.chat-button {
+  flex-grow: 1;
+}
+
+.delete-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #075e54;
+}
+
+.delete-icon:hover {
+  color: #128c7e;
+}

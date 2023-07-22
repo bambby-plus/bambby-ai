@@ -1,0 +1,16 @@
+node_modules
+.env.local
+logs
+package-lock.json
+
+yarn.lock
+.env
+
+/coverage
+/.idea
+logs
+*.log
+.rest
+.http
+*.rest
+.DS_Store
