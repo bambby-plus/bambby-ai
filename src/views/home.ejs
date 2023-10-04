@@ -5,7 +5,7 @@
   <title>Bambby ChatBot</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <link rel="stylesheet" href="/css/original.css">
+  <link rel="stylesheet" href="/css/original.css">
   <style id="darkModeStyle" disable>
     /* CSS Styles */
     * {
@@ -21,11 +21,11 @@
     }
 
     .sidebar-container {
-      overflow: hidden;
       display: flex;
       height: calc(100vh - 50px);
       min-width: 300px;
-      transition: width 0.3s ease-in-out;
+      width: 300px;
+      transition: transform 0.3s ease-in-out;
     }
 
     .chat-container {
@@ -36,20 +36,18 @@
     }
 
     .sidebar {
-      width: 300px;
+      width: inherit;
       background-color: #075e54;
       display: flex;
       flex-direction: column;
-      min-width: 300px;
-      transition: transform 0.3s ease-in-out;
+      overflow: hidden;
     }
 
-    .sidebar.collapsed {
-      transform: translateX(-250px);
-    }
 
     .sidebar-container.collapsed {
-      min-width: 50px;
+      transform: translateX(-300px);
+      min-width: 0px;
+      width: 0px !important;
     }
 
     .sidebar-header {
@@ -71,13 +69,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     .collapse-button {
+      position: absolute;
+      left: 0px;
+      top: 58px;
       flex-shrink: 0;
       background-color: #25d366;
-      color: #ffffff;
+      color: #fff;
+      z-index: 5;
     }
+
+
 
     .new-chat-button {
       width: calc(100% - 20px);
@@ -452,6 +457,9 @@
 </head>
 
 <body>
+  <button id="collapse-button" class="collapse-button">
+    <i class="fas fa-chevron-left"></i>
+  </button>
   <div class="chat-header">
     <h1>bambby</h1>
     <i type="button" id="modeBtn" class="fas fa-adjust toggle-button"></i>
@@ -460,12 +468,9 @@
     <div class="sidebar-container">
       <div class="sidebar">
         <div class="sidebar-content">
-          <div class="buttons-container">
-            <button class="new-chat-button">Start a New Chat</button>
-            <button id="collapse-button" class="collapse-button">
-              <i class="fas fa-chevron-left"></i>
-            </button>
-          </div>
+          <button class="new-chat-button">Start a New Chat</button>
+          <!-- <div class="buttons-container">
+          </div> -->
         </div>
 
         <div class="previous-chats">

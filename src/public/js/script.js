@@ -125,7 +125,7 @@ function openChat(chatNumber, event) {
 
     // Create message input element
     const messageInput = document.createElement("textarea");
-    messageInput.setAttribute("id", `message_input`);
+    // messageInput.setAttribute("id", `message_input`);
     messageInput.setAttribute("placeholder", "Type a message...");
     messageInput.setAttribute("rows", "1");
     inputContainer.appendChild(messageInput);
@@ -491,6 +491,7 @@ const collapseIcon = toggleButton.querySelector("i");
 toggleButton.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
   sidebarContainer.classList.toggle("collapsed");
+  toggleButton.classList.toggle("collapsed")
 
   if (sidebar.classList.contains("collapsed")) {
     sidebarContainer.style.width = "50px"; /* Adjust the pixel value as per your desired visibility */
@@ -511,8 +512,8 @@ Marketplace.addEventListener("click", () => {
   openChat(1, Marketplace);
 });
 Medicals.addEventListener("click", () => {
-  openChat(1, Medicals);
+  openChat(2, Medicals);
 });
 Games.addEventListener("click", () => {
-  openChat(1, Games);
+  openChat(3, Games);
 });
